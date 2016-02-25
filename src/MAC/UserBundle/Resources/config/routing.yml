@@ -1,0 +1,25 @@
+mac_user_homepage: # identificador único
+    path:     /hello/{name} # uri
+    defaults: { _controller: MACUserBundle:Default:index } # bundle:controller:action
+
+mac_user_index:
+    path:     /user/index
+    defaults: { _controller: MACUserBundle:User:index }
+
+# user crud operations
+mac_user_add:
+    path:     /user/add
+    defaults: { _controller: MACUserBundle:User:add }
+
+mac_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: MACUserBundle:User:edit }
+
+mac_user_view:
+    path:     /user/view/{id}
+    defaults: { _controller: MACUserBundle:User:view }
+
+mac_user_delete:
+    path:     /user/delete/{id}
+    defaults: { _controller: MACUserBundle:User:delete }
+# end user crud operations

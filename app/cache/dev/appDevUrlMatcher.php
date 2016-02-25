@@ -127,6 +127,39 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // mac_user_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mac_user_homepage')), array (  '_controller' => 'MAC\\UserBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/user')) {
+            // mac_user_index
+            if ($pathinfo === '/user/index') {
+                return array (  '_controller' => 'MAC\\UserBundle\\Controller\\UserController::indexAction',  '_route' => 'mac_user_index',);
+            }
+
+            // mac_user_add
+            if ($pathinfo === '/user/add') {
+                return array (  '_controller' => 'MAC\\UserBundle\\Controller\\UserController::addAction',  '_route' => 'mac_user_add',);
+            }
+
+            // mac_user_edit
+            if (0 === strpos($pathinfo, '/user/edit') && preg_match('#^/user/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mac_user_edit')), array (  '_controller' => 'MAC\\UserBundle\\Controller\\UserController::editAction',));
+            }
+
+            // mac_user_view
+            if (0 === strpos($pathinfo, '/user/view') && preg_match('#^/user/view/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mac_user_view')), array (  '_controller' => 'MAC\\UserBundle\\Controller\\UserController::viewAction',));
+            }
+
+            // mac_user_delete
+            if (0 === strpos($pathinfo, '/user/delete') && preg_match('#^/user/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mac_user_delete')), array (  '_controller' => 'MAC\\UserBundle\\Controller\\UserController::deleteAction',));
+            }
+
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
