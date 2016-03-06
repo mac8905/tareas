@@ -11,6 +11,11 @@ mac_user_add:
     path:     /user/add
     defaults: { _controller: MACUserBundle:User:add }
 
+mac_user_create:
+    path:     /user/create
+    defaults: { _controller: MACUserBundle:User:create }
+    methods: POST
+
 mac_user_edit:
     path:     /user/edit/{id}
     defaults: { _controller: MACUserBundle:User:edit }
